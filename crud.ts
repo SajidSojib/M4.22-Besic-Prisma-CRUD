@@ -28,6 +28,29 @@ async function run() {
     //     }
     // })
     // console.log('Created profile:', createProfile);
+
+
+    //* read
+    // const allUsers = await prisma.users.findMany();     //? only returns user data
+    // console.log('All users:', allUsers);
+
+    // const allUsers = await prisma.users.findMany({
+    //     // include: {           //? returns user data + related data
+    //     //     posts: true,
+    //     //     profile: true
+    //     // }
+
+    //     select: {               //? only returns selected portions from user + related data
+    //         name: true,
+    //         posts: true,
+    //         profile: {
+    //             select: {
+    //                 bio: true
+    //             }
+    //         }
+    //     }
+    // });
+    // console.dir(allUsers, { depth: null });
 }
 
 run();
