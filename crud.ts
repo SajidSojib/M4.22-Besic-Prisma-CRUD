@@ -51,22 +51,63 @@ async function run() {
     // });
     // console.dir(allUsers, { depth: null });
 
+    // const getUserById = await prisma.users.findUnique({
+    //     where: {
+    //         id: 1
+    //     },
+    //     include: {
+    //         posts: true,
+    //         profile: true
+    //     }
+    // });
+    // console.dir(getUserById, { depth: null });
+
 
     //* update
-    const updateUser = await prisma.profile.update({
+    // const updateUser = await prisma.profile.update({
+    //     where: {
+    //         id: 1
+    //     },
+    //     data: {
+    //         bio: "This is my new bio"
+    //     },
+    //     select: {
+    //         id: true,
+    //         bio: true,
+    //         user: true
+    //     }
+    // });
+    // console.log('Updated user:', updateUser);
+
+    //* upsert -> update if exists, else create
+    // const upsertUser = await prisma.users.upsert({
+    //     where: {
+    //         email: "tanvir@prisma"
+    //     },
+    //     update: {
+    //         name: "Tanvir Ahmed Maruf",
+    //         email: "tanvir@prisma"
+    //     },
+    //     create: {
+    //         name: "Tanvir Ahmed Maruf",
+    //         email: "tanvir@prisma"
+    //     }
+    // });
+    // console.log('Upserted user:', upsertUser);
+
+    // //* delete
+    // const deleteUser = await prisma.users.delete({     //! error - has related post, profile
+    //     where: {
+    //         id: 1
+    //     }
+    // });
+
+    const deleteUser = await prisma.users.delete({
         where: {
-            id: 1
-        },
-        data: {
-            bio: "This is my new bio"
-        },
-        select: {
-            id: true,
-            bio: true,
-            user: true
+            id: 2
         }
-    });
-    console.log('Updated user:', updateUser);
+    })
+    console.log('Deleted user:', deleteUser);
 }
 
 run();
