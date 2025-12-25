@@ -39,7 +39,6 @@ async function run() {
     //     //     posts: true,
     //     //     profile: true
     //     // }
-
     //     select: {               //? only returns selected portions from user + related data
     //         name: true,
     //         posts: true,
@@ -51,6 +50,23 @@ async function run() {
     //     }
     // });
     // console.dir(allUsers, { depth: null });
+
+
+    //* update
+    const updateUser = await prisma.profile.update({
+        where: {
+            id: 1
+        },
+        data: {
+            bio: "This is my new bio"
+        },
+        select: {
+            id: true,
+            bio: true,
+            user: true
+        }
+    });
+    console.log('Updated user:', updateUser);
 }
 
 run();
